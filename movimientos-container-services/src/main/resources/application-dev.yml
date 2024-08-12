@@ -1,0 +1,79 @@
+server:
+  port: 8096
+  servlet:
+    context-path: /api
+application:
+  title: BASE
+  version: 1.0.0-SNAPSHOT
+web:
+  cors:
+    allowed-origins: "*"
+    max-age: 3600
+remote:
+  microservice:
+
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          max-age: 24h
+  main:
+    lazy-initialization: true
+
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ICERT
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: POSTGRESQL
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: public
+        globally_quoted_identifiers: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    defer-datasource-initialization: false
+  sql:
+    init:
+      platform: postgresql
+      mode: always
+  hikari:
+    minimumIdle: 1
+    maximumPoolSize: 1
+    idleTimeout: 30000
+    maxLifetime: 1800000
+    connectionTimeout: 80000
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  cloud:
+    config:
+      enabled: false
+  messages:
+    basename: messages
+
+eureka:
+  client:
+    enabled: false
+
+management:
+  tracing:
+    sampling:
+      probability: 1
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SonarLintProjectSettings">
+    <option name="moduleMapping">
+      <map>
+        <entry key="movimientos-application-services" value="sorteos-aleatorios-application" />
+        <entry key="movimientos-commons-services" value="sorteos-aleatorios-commons" />
+        <entry key="movimientos-container-services" value="sorteos-aleatorios-container-services" />
+        <entry key="movimientos-dataaccess-services" value="sorteos-aleatorios-dataaccess-services" />
+        <entry key="movimientos-domain-application" value="sorteos-aleatorios-domain-application" />
+        <entry key="movimientos-domain-core" value="sorteos-aleatorios-domain-core" />
+        <entry key="movimientos-domain-services" value="sorteos-aleatorios-domain-services" />
+        <entry key="movimientos-remote-services" value="sorteos-aleatorios-remote" />
+        <entry key="movimientos-services" value="sorteos-aleatorios-microservices" />
+      </map>
+    </option>
+  </component>
+</project>

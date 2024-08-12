@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  db-service:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: PRUEBA
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - shared-network
+
+  movimientos-service:
+    build:
+      context: .
+      dockerfile: ./movimientos-container-services/Dockerfile
+    container_name: movimientos-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db-service:5432/PRUEBA
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8097:8097"
+    depends_on:
+      - db-service
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true
+
+volumes:
+  postgres_data:

@@ -2,6 +2,36 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <artifactId>movimientos-container-services</artifactId>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+        <groupId>org.springframework.boot</groupId>
+        <version>3.2.6</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+              <mainClass>ec.domain.container.BaseServiceApplication</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>3.2.0</version>
+      </plugin>
+    </plugins>
+  </build>
   <dependencies>
     <dependency>
       <artifactId>movimientos-domain-application</artifactId>
@@ -77,51 +107,5 @@
     <relativePath>../pom.xml</relativePath>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <profiles>
-    <profile>
-      <build>
-        <plugins>
-          <plugin>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <configuration>
-              <image>
-                <builder>paketobuildpacks/builder-jammy-tiny:latest</builder>
-                <createdDate>now</createdDate>
-                <env>
-                  <BPE_APPEND_JAVA_TOOL_OPTIONS>-XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=1024M
-                    -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true
-                    -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -Xss512k
-                    -Dfile.encoding=UTF-8 -Duser.timezone=GMT-5 -Duser.language=es -Duser.region=EC
-                    -XX:ParallelGCThreads=4 -XX:ConcGCThreads=4
-                    -XX:InitiatingHeapOccupancyPercent=70
-                    -XX:+UseStringDeduplication -XX:G1NewSizePercent=20 -XX:G1MaxNewSizePercent=60
-                    -XX:G1HeapRegionSize=32M -XX:G1HeapWastePercent=5
-                    -XX:G1MixedGCLiveThresholdPercent=85 -XX:G1MixedGCCountTarget=4
-                    -XX:G1OldCSetRegionThresholdPercent=10 -XX:MaxDirectMemorySize=512M
-                  </BPE_APPEND_JAVA_TOOL_OPTIONS>
-                  <BPE_DELIM_JAVA_TOOL_OPTIONS xml:space="preserve"> </BPE_DELIM_JAVA_TOOL_OPTIONS>
-                  <BP_JVM_JLINK_ARGS>--no-man-pages --no-header-files --strip-debug --compress=2
-                  </BP_JVM_JLINK_ARGS>
-                  <BP_JVM_VERSION>${java.version}</BP_JVM_VERSION>
-                </env>
-                <name>${project.groupId}/${project.parent.artifactId}:${project.version}</name>
-              </image>
-            </configuration>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>build-image</goal>
-                </goals>
-                <phase>package</phase>
-              </execution>
-            </executions>
-            <groupId>org.springframework.boot</groupId>
-            <version>3.2.6</version>
-          </plugin>
-        </plugins>
-      </build>
-      <id>generar-imagen-docker</id>
-    </profile>
-  </profiles>
   <url>http://maven.apache.org</url>
 </project>

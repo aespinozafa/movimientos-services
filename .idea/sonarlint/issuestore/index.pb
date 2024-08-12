@@ -86,3 +86,15 @@ S
 Smovimientos-container-services/src/main/java/ec/domain/config/ValidationConfig.java,f\4\f471c0ff1b83f774531068578e175a92c6917dbd
 Œ
 \movimientos-container-services/src/main/java/ec/domain/config/CustomMessageInterpolator.java,a\4\a4fcf10cd7d2b3ef5e5aee688035ec476dc1214f
+V
+&movimientos-container-services/pom.xml,d\4\d4c2f3b739ed1805fd3ed1545c90753e962a95f6
+B
+docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
+]
+-movimientos-container-services/src/Dockerfile,8\d\8dc032a505f931d445612713c306505ed5f02d10
+Y
+)movimientos-container-services/Dockerfile,3\9\3986410adcd486ad758a39e70c59ddcf589d3f29
+q
+Amovimientos-container-services/src/main/resources/application.yml,c\7\c7fc92666eac15baa36b0a97dc8243e8e598d65b
+Œ
+\movimientos-container-services/src/main/java/ec/domain/container/BaseServiceApplication.java,e\4\e4be6c2840f6774882d1e3d22b8992d041d1ea22
